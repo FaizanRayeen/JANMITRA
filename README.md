@@ -1,29 +1,32 @@
 # JANMITRA — Civic Grievance Redressal Ecosystem
 ### Nagpur Municipal Corporation (NMC) Pilot Project
-**Developed by Team ResolveIT** | **Affiliation**: Priyadarshini Bhagwati College of Engineering (PBCOE), Nagpur | **RTMNU (2026)**
+**Developer**: **Faizan Rayeen** | **Department of Computer Science & Engineering**  
+**Institution**: Priyadarshini Bhagwati College of Engineering (PBCOE), Nagpur | **RTMNU (Final Year B.Tech, 2026)**
 
 ---
 
 ## 🏛️ Project Overview
 
-**JANMITRA** is an intelligent, transparent, and crowdsourced civic issue reporting and municipal resolution platform engineered for the **Nagpur Municipal Corporation (NMC)**. It eliminates traditional municipal grievance gridlock by establishing a real-time, closed-loop pipeline connecting citizens, zonal department officers (PWD, SWM, PHE, Electricity), and ward-level maintenance personnel.
+**JANMITRA** is an intelligent, transparent, and crowdsourced civic issue reporting and municipal resolution ecosystem engineered for the **Nagpur Municipal Corporation (NMC)**. The platform bridges the communication gap between citizens, municipal zonal officers, and ward-level maintenance personnel to accelerate grievance redressal with verified photographic proof and real-time tracking.
 
-### 👥 Team Work Distribution & Directory Structure
+---
 
-To showcase individual engineering contributions for college evaluation and GitHub portfolios, the repository includes dedicated contributor directories:
+## 👤 Developer Portfolio: Faizan Rayeen
 
-- **[`faizan-rayeen/`](./faizan-rayeen/) — Faizan Rayeen**
-  - **Role**: Citizen Portal Lead & Push Notification System Architect
-  - **Deliverables**: Complete Citizen Portal (Home, Multi-Step Report with GPS, Stepper, History, Profile), Firebase Cloud Messaging (FCM) push pipeline, Service Worker caching & offline IndexedDB sync, university work reports (Days 1–40 Master Summary PDF), test commands, and viva presentation scripts.
-- **[`anurag-deshmukh/`](./anurag-deshmukh/) — Anurag Deshmukh**
-  - **Role**: Frontend Lead — Authority Dashboard & Worker Management *(Swapped with Om)*
-  - **Deliverables**: Zonal Officer Triage Dashboard (`OfficerDashboard.jsx`), Cross-Department Analytics (`CrossDeptDashboard.jsx`), Field Worker Management Panel (`WorkerManagement.jsx`), Worker Onboarding Form (`WorkerRegistrationForm.jsx`), Recharts analytics, and ward distribution views.
-- **[`om-gadekar/`](./om-gadekar/) — Om Gadekar**
-  - **Role**: AI/ML & Spatial Data Lead *(Swapped with Anurag)*
-  - **Deliverables**: Visual defect validation pipeline (YOLOv8 + OpenCV), PostGIS 100-meter duplicate proximity queries (`ST_DWithin`), and weighted multi-factor priority scoring engine.
-- **Backend Infrastructure (Anas Shaikh)**:
-  - **Role**: Backend & Core Systems Lead
-  - **Deliverables**: Django REST core architecture, Custom User RBAC authentication, Celery task orchestrations, and PostGIS spatial modeling.
+All core deliverables, reports, and architecture specifications developed by **Faizan Rayeen** are organized inside the **[`faizan-rayeen/`](./faizan-rayeen/)** directory:
+
+- **[`faizan-rayeen/reports/`](./faizan-rayeen/reports/)**:
+  - 📄 **[40-Day Master Engineering Summary (PDF)](./faizan-rayeen/reports/JANMITRA_Faizan_Rayeen_Day1_to_Day40_Master_Summary.pdf)** — 7-page university report with embedded screenshots, flowcharts, and 40-day milestone matrix.
+  - 📄 **[Days 31 to 40 Work Report (PDF)](./faizan-rayeen/reports/JANMITRA_Faizan_Rayeen_Days_31_to_40_Work_Report.pdf)** — Production hardening, FCM test guide, and capstone sign-off.
+  - 📘 **[Academic Thesis Chapter 1: Introduction](./faizan-rayeen/reports/REPORT_CHAPTER_1_INTRODUCTION.md)** — Formal university thesis introductory chapter.
+  - 📱 **[Dual-Screen Viva Demo Protocol](./faizan-rayeen/reports/NOTIFICATION_DEMO_GUIDE.md)** — Step-by-step viva presentation protocol connecting citizen phone with officer laptop.
+  - 🛠️ **[Notification Testing & Debugging Guide](./faizan-rayeen/reports/notification_test_guide.md)** — FCM credentials, browser permissions, and service worker guide.
+  - 📋 **[Production Testing Checklist](./faizan-rayeen/reports/PRODUCTION_TEST_CHECKLIST.md)** — 4-role verification checklist & 25 demo accounts reference table.
+  - 🎓 **[Official College Sign-Off Certificate](./faizan-rayeen/reports/PROJECT_COMPLETION_SIGNOFF.md)** — Certified college completion document.
+- **[`faizan-rayeen/modules/`](./faizan-rayeen/modules/)**:
+  - `citizen-portal-pages/` — Citizen Portal (`Home.jsx`, `Submit.jsx`, `ComplaintDetail.jsx`, `MyComplaints.jsx`, `Profile.jsx`, `Help.jsx`).
+  - `firebase.js` & `firebase-messaging-sw.js` — Client FCM handlers, foreground toasts, and offline IndexedDB background sync.
+  - `notifications-backend/` — Custom Django diagnostic command (`send_test_notification.py`) and notification triggers.
 
 ---
 
@@ -31,6 +34,19 @@ To showcase individual engineering contributions for college evaluation and GitH
 
 ```
 JANMITRA/
+├── faizan-rayeen/            # Faizan Rayeen's dedicated workspace & work portfolio
+│   ├── reports/              # 40-Day Master Summary PDF, Days 31-40 PDF, Chapter 1, Guides
+│   ├── modules/              # Citizen Portal components, Firebase, Notification backend
+│   └── README.md             # Detailed breakdown of Faizan Rayeen's 40-day contributions
+│
+├── frontend/                 # React 18 + Vite 5 + Tailwind CSS PWA
+│   ├── src/pages/citizen/    # Citizen Portal (Home, Submit with GPS, Detail, Profile)
+│   ├── src/pages/officer/    # Zonal Officer Triage Dashboard
+│   ├── src/pages/admin/      # Field Worker Management & Roster
+│   ├── src/services/         # Axios API instance with dynamic network host resolution
+│   ├── src/firebase.js       # FCM push client, toasts, gentle permission recovery banner
+│   └── public/               # Hardened Service Worker (firebase-messaging-sw.js)
+│
 ├── backend/                  # Django 5.x REST API & PostgreSQL models
 │   ├── accounts/             # Custom User model, JWT authentication, RBAC
 │   ├── complaints/           # Grievance CRUD, GPS models, 6-stage lifecycle
@@ -38,37 +54,15 @@ JANMITRA/
 │   ├── notifications/        # Firebase Admin SDK push alerts & management commands
 │   └── config/               # Settings, CORS, WSGI/ASGI configuration
 │
-├── frontend/                 # React 18 + Vite 5 + Tailwind CSS PWA
-│   ├── src/pages/citizen/    # Citizen Portal (Home, Submit, Detail, Profile, Help)
-│   ├── src/pages/officer/    # Zonal Officer Triage Dashboard
-│   ├── src/pages/admin/      # Worker Management & Cross-Department View
-│   ├── src/services/         # Axios API instance with dynamic network host resolution
-│   ├── src/firebase.js       # FCM push client, toasts, gentle permission recovery banner
-│   └── public/               # Hardened Service Worker (firebase-messaging-sw.js)
-│
-├── faizan-rayeen/            # Faizan Rayeen's dedicated workspace & portfolio
-│   ├── reports/              # 40-Day Master Summary PDF, Days 31-40 PDF, Chapter 1, Guides
-│   ├── modules/              # Citizen Portal components, Firebase, Notification backend
-│   └── README.md             # Detailed breakdown of Faizan Rayeen's contributions
-│
-├── anurag-deshmukh/          # Anurag Deshmukh's dedicated workspace & portfolio
-│   ├── authority-dashboard/  # Officer Dashboard & Cross-Department analytics
-│   ├── worker-management/    # Worker roster & onboarding modal
-│   └── README.md             # Detailed breakdown of Anurag's Frontend role
-│
-├── om-gadekar/               # Om Gadekar's dedicated workspace & portfolio
-│   ├── ai-validation-module/ # YOLOv8 validation & 100m duplicate radius specifications
-│   └── README.md             # Detailed breakdown of Om's AI/ML role
-│
 ├── docs/                     # 11 Master technical specification PDFs (PRD, SRS, Architecture)
 ├── screenshots/              # Real application UI screenshots (Desktop & Mobile)
-├── push_to_github.bat        # 1-Click direct push helper script
+├── push_to_github.bat        # 1-Click push script
 └── README.md                 # Master project documentation
 ```
 
 ---
 
-## ⚡ Quickstart Guide: Running Locally
+## ⚡ Quickstart: Running Locally
 
 ### 1. Backend Setup (Django REST Framework)
 ```bash
@@ -100,7 +94,7 @@ npm run dev -- --host 0.0.0.0
 The frontend services feature **Dynamic Hostname Resolution**, automatically routing API requests to your computer's IP address when accessed over the network:
 
 1. Connect your **smartphone** and **laptop** to the **same Wi-Fi network** (or laptop Mobile Hotspot).
-2. Check your laptop's Wi-Fi IP address (e.g., `192.168.31.94`).
+2. Check your laptop's Wi-Fi IP address: **`192.168.31.94`**.
 3. Start the backend with `python manage.py runserver 0.0.0.0:8000`.
 4. Start the frontend with `npm run dev -- --host 0.0.0.0`.
 5. On your phone's browser (Chrome or Safari), visit:
@@ -127,7 +121,7 @@ The frontend services feature **Dynamic Hostname Resolution**, automatically rou
 
 ---
 
-## 📜 Academic Master Documentation Suite (11 Volumes)
+## 📜 Master Technical Documentation Suite (11 Volumes)
 
 All 11 technical specification PDFs are located in [`docs/`](./docs/):
 1. `01_PRD_ResolveIT_Janmitra.pdf` — Product Requirement Document
@@ -143,4 +137,4 @@ All 11 technical specification PDFs are located in [`docs/`](./docs/):
 11. `11_Day_by_Day_Prompts_ResolveIT_Janmitra.pdf` — Complete 40-Day Development Prompts
 
 ---
-*Built with ❤️ for Nagpur Municipal Corporation by Team ResolveIT (PBCOE Nagpur).*
+*Developed by Faizan Rayeen | PBCOE Nagpur / RTMNU.*

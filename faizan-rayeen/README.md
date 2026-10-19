@@ -9,7 +9,11 @@
 
 Over the 40-day engineering sprint of JANMITRA, Faizan Rayeen served as the primary architect and developer for the **Citizen Grievance Redressal Portal** and the **Dual-Mode Push Notification Infrastructure**. 
 
-With the team restructuring where Om Gadekar's work was reassigned, Faizan Rayeen and Anurag Deshmukh now jointly handle and maintain the frontend ecosystems (Faizan driving the Citizen Portal & Notification UX, while collaborating on cross-portal design systems).
+Within Team ResolveIT:
+- **Faizan Rayeen**: Citizen Portal Frontend & Push Notification System
+- **Anurag Deshmukh**: Authority Dashboard & Worker Management Frontend (Om's work swap)
+- **Om Gadekar**: AI/ML & Spatial Data Pipeline (Anurag's work swap)
+- **Anas Shaikh**: Backend Core Systems & Routing APIs
 
 ---
 

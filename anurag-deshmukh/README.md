@@ -1,60 +1,45 @@
 # Anurag Deshmukh — Engineering Contributions & Work Portfolio
-## Role: AI & Data Lead + Authority Dashboard & Worker Frontend Co-Lead
+## Role: Frontend Lead — Authority Dashboard & Worker Management
 **Team ResolveIT** | Project: **JANMITRA (Nagpur Municipal Corporation Civic Redressal Ecosystem)**  
 **Academic Affiliation**: Priyadarshini Bhagwati College of Engineering (PBCOE), Nagpur | RTMNU (Final Year B.Tech CSE, 2026)  
 
 ---
 
-## 1. Executive Summary & Role Reorganization
+## 1. Executive Summary
 
-Anurag Deshmukh serves as the **AI & Data Lead** and **Authority Dashboard & Worker Frontend Co-Lead** for the JANMITRA project. 
+In the JANMITRA project, **Anurag Deshmukh** served as the **Frontend Lead for the Authority Dashboard and Worker Management System**. His primary responsibility was building the administrative control centers that enable municipal officials and field maintenance personnel to triage, assign, and track civic issues across all 4 pilot municipal wards in Nagpur.
 
-> [!IMPORTANT]
-> **Team Structure Update**:  
-> In the updated project execution plan, the responsibilities previously allocated to Om Gadekar (Authority Dashboard, Recharts Analytics, Worker Panel, and Workforce Management) are now **co-handled and maintained by Anurag Deshmukh and Faizan Rayeen**. Anurag drives the analytical dashboards, worker allocation interfaces, and AI validation pipeline, while Faizan co-handles frontend integration and visual design consistency.
+*(Note: In the team work allocation, Anurag Deshmukh executed the Frontend Dashboard & Worker Panel modules, while Om Gadekar executed the AI & Computer Vision module).*
 
 ---
 
-## 2. Core Modules & Deliverables
+## 2. Core Modules & Key Deliverables
 
-### A. Authority & Zonal Officer Dashboard (Frontend + Backend)
-Located in [`authority-dashboard/`](./authority-dashboard/) and [`../frontend/src/pages/officer/`](../frontend/src/pages/officer/):
-- **Zonal Officer Triage Dashboard (`OfficerDashboard.jsx`)**:
-  - Live KPI cards: Total Reported, Pending Triage, Resolved & Closed, and Average SLA Turnaround.
-  - Department-specific views (Public Works Department, Solid Waste Management, Water Supply, Electricity).
-  - Ward volume breakdown (Wards 1 to 4) tracking ticket distribution across Nagpur zones.
-  - Priority triage list prioritizing critical civic hazards.
-- **Cross-Department Super Admin Dashboard (`CrossDeptDashboard.jsx`)**:
-  - Citywide civic analytics combining performance across all 4 departments.
-  - Recharts visual graphs: Monthly grievance resolution curves and ward choropleth metrics.
-- **Backend Dashboard API (`backend_dashboard_app/`)**:
-  - Located in [`authority-dashboard/backend_dashboard_app/`](./authority-dashboard/backend_dashboard_app/) and [`../backend/dashboard/`](../backend/dashboard/).
-  - REST endpoints serving KPI summaries, ward analytics, and department performance data.
+### A. Department Officer Triage Dashboard (`authority-dashboard/`)
+- **`OfficerDashboard.jsx`**:
+  - Real-time KPI summary cards: Total Reported (142), Pending Triage (38), Resolved & Closed (104), Average SLA Turnaround (3.8 Days).
+  - Departmental views for Public Works Department (PWD), Solid Waste Management (SWM), Public Health Engineering (PHE), and Electricity (ELE).
+  - Ward volume breakdown (Wards 1, 2, 3, and 4) tracking ticket distribution across Nagpur.
+  - Priority triage queue highlighting high-risk and critical civic hazards.
+- **`CrossDeptDashboard.jsx`**:
+  - Super Admin view providing unified cross-departmental analytics for municipal leadership.
+  - Interactive Recharts visualization showing resolution curves, SLA compliance, and ward-level distribution.
 
-### B. Municipal Worker Management & Roster
-Located in [`worker-management/`](./worker-management/) and [`../frontend/src/pages/admin/`](../frontend/src/pages/admin/):
-- **Worker Management Panel (`WorkerManagement.jsx`)**:
-  - Master field worker directory across all 4 municipal wards.
-  - Real-time search by Employee ID (e.g., `NMC-PWD-101`) or worker name.
-  - Filters by Department (PWD, SWM, PHE, ELE), Ward (1 to 4), and Status (Active, Inactive, On Leave).
-  - Active task count badges and instant activation/deactivation action triggers.
-- **Worker Registration Form (`WorkerRegistrationForm.jsx`)**:
-  - Administrative modal for onboarding new municipal field technicians with departmental and ward assignment.
+### B. Field Worker Management & Allocation (`worker-management/`)
+- **`WorkerManagement.jsx`**:
+  - Master field worker directory covering all 4 departments and 4 municipal wards.
+  - Live search by worker name or Employee ID (e.g., `NMC-PWD-101`).
+  - Dropdown filters for Department, Ward, and Employment Status (Active, Inactive, On Leave).
+  - Active task count badges and instant status toggle action triggers.
+- **`WorkerRegistrationForm.jsx`**:
+  - Modal interface for onboarding new municipal field workers and assigning department/ward jurisdictions.
 
-### C. AI & Computer Vision Validation Pipeline (Specifications & Design)
-Located in [`ai-validation-module/`](./ai-validation-module/):
-- **YOLOv8 Civic Defect Classifier (`yolo_validator.py`)**:
-  - Deep learning model architecture to verify whether an uploaded photo is an authentic civic defect (road pothole, uncollected garbage, open manhole, broken streetlight) or a fake/synthetic image.
-  - Minimum confidence threshold: 0.70.
-- **Geospatial Duplicate Detector (`duplicate_detector.py`)**:
-  - PostGIS spatial radius query (`ST_DWithin`) flagging new complaints submitted within **100 meters** of an existing open complaint in the same category.
-- **Multi-Factor Priority Scoring Engine (`priority_engine.py`)**:
-  - Computes weighted priority score:
-    $$\text{Priority Score} = (w_1 \times \text{Defect Severity}) + (w_2 \times \text{Ward Population Density}) + (w_3 \times \text{Duplicate Volume}) + (w_4 \times \text{SLA Age})$$
+### C. Backend Dashboard Integration (`backend_dashboard_app/`)
+- Integration with Django REST Framework endpoints under `dashboard/` serving KPI summaries, ward analytics, and worker roster data.
 
 ---
 
-## 3. Directory Contents
+## 3. Directory Layout
 
 ```
 anurag-deshmukh/
@@ -65,9 +50,7 @@ anurag-deshmukh/
 ├── worker-management/
 │   ├── WorkerManagement.jsx          # Worker Roster & Allocation Interface
 │   └── WorkerRegistrationForm.jsx    # Technician Onboarding Form
-├── ai-validation-module/
-│   └── README.md                     # AI Model Specifications & Formulas
-└── README.md                         # This summary document
+└── README.md                         # This work summary
 ```
 
 ---

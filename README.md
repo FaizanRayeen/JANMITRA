@@ -12,15 +12,18 @@
 
 To showcase individual engineering contributions for college evaluation and GitHub portfolios, the repository includes dedicated contributor directories:
 
-- **[`faizan-rayeen/`](./faizan-rayeen/) — Faizan Rayeen (Lead Developer)**
-  - **Role**: Citizen Portal Lead & Push Notification System Architect (Frontend Co-Lead)
+- **[`faizan-rayeen/`](./faizan-rayeen/) — Faizan Rayeen**
+  - **Role**: Citizen Portal Lead & Push Notification System Architect
   - **Deliverables**: Complete Citizen Portal (Home, Multi-Step Report with GPS, Stepper, History, Profile), Firebase Cloud Messaging (FCM) push pipeline, Service Worker caching & offline IndexedDB sync, university work reports (Days 1–40 Master Summary PDF), test commands, and viva presentation scripts.
 - **[`anurag-deshmukh/`](./anurag-deshmukh/) — Anurag Deshmukh**
-  - **Role**: AI & Data Lead + Authority Dashboard & Worker Frontend Co-Lead
-  - **Deliverables**: *Note: In our updated execution plan, Om Gadekar's frontend work is co-handled by Anurag and Faizan.* Anurag maintains the Zonal Officer Dashboard (`OfficerDashboard.jsx`), Cross-Department Analytics (`CrossDeptDashboard.jsx`), Field Worker Management Panel (`WorkerManagement.jsx`), and AI validation pipeline specifications (YOLOv8 defect verification & 100m duplicate detection).
+  - **Role**: Frontend Lead — Authority Dashboard & Worker Management *(Swapped with Om)*
+  - **Deliverables**: Zonal Officer Triage Dashboard (`OfficerDashboard.jsx`), Cross-Department Analytics (`CrossDeptDashboard.jsx`), Field Worker Management Panel (`WorkerManagement.jsx`), Worker Onboarding Form (`WorkerRegistrationForm.jsx`), Recharts analytics, and ward distribution views.
+- **[`om-gadekar/`](./om-gadekar/) — Om Gadekar**
+  - **Role**: AI/ML & Spatial Data Lead *(Swapped with Anurag)*
+  - **Deliverables**: Visual defect validation pipeline (YOLOv8 + OpenCV), PostGIS 100-meter duplicate proximity queries (`ST_DWithin`), and weighted multi-factor priority scoring engine.
 - **Backend Infrastructure (Anas Shaikh)**:
   - **Role**: Backend & Core Systems Lead
-  - **Deliverables**: Django REST core architecture, RBAC authentication, Celery task orchestrations, and PostGIS spatial modeling.
+  - **Deliverables**: Django REST core architecture, Custom User RBAC authentication, Celery task orchestrations, and PostGIS spatial modeling.
 
 ---
 
@@ -43,19 +46,23 @@ JANMITRA/
 │   ├── src/firebase.js       # FCM push client, toasts, gentle permission recovery banner
 │   └── public/               # Hardened Service Worker (firebase-messaging-sw.js)
 │
-├── faizan-rayeen/            # Faizan Rayeen's dedicated workspace & work portfolio
+├── faizan-rayeen/            # Faizan Rayeen's dedicated workspace & portfolio
 │   ├── reports/              # 40-Day Master Summary PDF, Days 31-40 PDF, Chapter 1, Guides
 │   ├── modules/              # Citizen Portal components, Firebase, Notification backend
-│   └── README.md             # Detailed breakdown of Faizan Rayeen's 40-day contributions
+│   └── README.md             # Detailed breakdown of Faizan Rayeen's contributions
 │
-├── anurag-deshmukh/          # Anurag Deshmukh's dedicated workspace & work portfolio
+├── anurag-deshmukh/          # Anurag Deshmukh's dedicated workspace & portfolio
 │   ├── authority-dashboard/  # Officer Dashboard & Cross-Department analytics
-│   ├── worker-management/    # Worker roster & onboarding modal (handover from Om Gadekar)
+│   ├── worker-management/    # Worker roster & onboarding modal
+│   └── README.md             # Detailed breakdown of Anurag's Frontend role
+│
+├── om-gadekar/               # Om Gadekar's dedicated workspace & portfolio
 │   ├── ai-validation-module/ # YOLOv8 validation & 100m duplicate radius specifications
-│   └── README.md             # Detailed breakdown of Anurag's responsibilities
+│   └── README.md             # Detailed breakdown of Om's AI/ML role
 │
 ├── docs/                     # 11 Master technical specification PDFs (PRD, SRS, Architecture)
 ├── screenshots/              # Real application UI screenshots (Desktop & Mobile)
+├── push_to_github.bat        # 1-Click direct push helper script
 └── README.md                 # Master project documentation
 ```
 

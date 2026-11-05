@@ -31,24 +31,17 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(() => localStorage.getItem('access_token') || 'local-citizen-token');
-  const [role, setRole] = useState(() => localStorage.getItem('user_role') || 'citizen');
+  const [token, setToken] = useState(() => localStorage.getItem('access_token') || null);
+  const [role, setRole] = useState(() => localStorage.getItem('user_role') || null);
   const [user, setUser] = useState(() => {
     try {
       const savedUser = localStorage.getItem('user_data');
       if (savedUser) return JSON.parse(savedUser);
     } catch {}
-    return {
-      id: 'u-faizan-1',
-      name: 'Faizan Rayeen',
-      mobile: '8767972843',
-      ward: 'Ward 4 (Mangalwari / North Nagpur)',
-      role: 'citizen',
-      account_status: 'Active'
-    };
+    return null;
   });
 
-  const isAuthenticated = Boolean(token);
+  const isAuthenticated = Boolean(token && user);
 
   /**
    * Save authentication payload from login/register APIs

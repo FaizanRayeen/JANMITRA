@@ -9,8 +9,8 @@
  * ==============================================================================
  */
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const getApiBaseUrl = () => {
@@ -37,11 +37,30 @@ export const LoginPage = () => {
     navigate = (path) => { window.location.href = path; };
   }
 
+  // URL search params for role and active tab (?tab=register&role=citizen / ?role=worker)
+  const [searchParams] = useSearchParams();
+  const initialTab = searchParams.get('tab') === 'register' ? 'register' : 'login';
+  const initialRole = searchParams.get('role') === 'worker' ? 'worker' : 'citizen';
+
   // Auth context for persisting credentials & triggering FCM registration
   const { login } = useAuth();
 
   // Active Tab state ('login' | 'register')
-  const [activeTab, setActiveTab] = useState('login');
+  const [activeTab, setActiveTab] = useState(initialTab);
+  const [selectedRole, setSelectedRole] = useState(initialRole);
+
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam === 'register') {
+      setActiveTab('register');
+    }
+    const roleParam = searchParams.get('role');
+    if (roleParam === 'worker') {
+      setSelectedRole('worker');
+    } else if (roleParam === 'citizen') {
+      setSelectedRole('citizen');
+    }
+  }, [searchParams]);
 
   // Loading state during API requests
   const [isLoading, setIsLoading] = useState(false);
@@ -141,7 +160,7 @@ export const LoginPage = () => {
     }
 
     if (!registerForm.ward) {
-      errors.ward = 'Please select your Nagpur ward';
+      errors.ward = 'Please select your municipal ward';
     }
 
     if (!registerForm.password) {
@@ -320,6 +339,16 @@ export const LoginPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col justify-center py-10 px-4 sm:px-6 lg:px-8 font-sans">
+      {/* Top Back Link */}
+      <div className="w-full max-w-md mx-auto mb-3">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-xs font-bold text-[#0d2a53] hover:text-blue-700 transition px-3 py-1.5 rounded-lg hover:bg-slate-200/60"
+        >
+          <span>←</span> Back to Public Home
+        </Link>
+      </div>
+
       {/* Centered Mobile-First Container */}
       <div className="w-full max-w-md mx-auto shadow-2xl rounded-2xl overflow-hidden border border-slate-200">
         
@@ -339,15 +368,26 @@ export const LoginPage = () => {
           </h1>
 
           {/* Authority Pill Badge */}
-          <div className="mt-1">
+          <div className="mt-1 flex items-center justify-center gap-1.5 flex-wrap">
             <span className="inline-block bg-blue-600/40 text-blue-200 border border-blue-400/30 text-[11px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider">
-              Municipal Corporation
+              Janmitra Municipal Corporation
             </span>
+            {activeTab === 'login' && (
+              <span className={`inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full ${
+                selectedRole === 'worker' ? 'bg-amber-500/30 text-amber-200 border border-amber-400/30' : 'bg-emerald-500/30 text-emerald-200 border border-emerald-400/30'
+              }`}>
+                {selectedRole === 'worker' ? '👷 Field Worker' : '👤 Citizen'}
+              </span>
+            )}
           </div>
 
           {/* Tagline */}
           <p className="text-slate-300 text-xs sm:text-sm mt-2 max-w-xs mx-auto leading-relaxed">
-            Civic Issue Reporting & Management System
+            {activeTab === 'register' 
+              ? 'New Citizen Registration for Grievance Redressal'
+              : selectedRole === 'worker'
+              ? 'JMC Field Worker Task & Repair Portal'
+              : 'Citizen Civic Issue Reporting & Redressal Portal'}
           </p>
         </div>
 
@@ -725,7 +765,7 @@ export const LoginPage = () => {
               </button>
 
               <div className="pt-2 text-center text-xs text-slate-400">
-                Official registration for citizens of Nagpur Municipal Corporation
+                Official registration for citizens of Janmitra Municipal Corporation
               </div>
             </form>
           )}
@@ -800,7 +840,7 @@ export const LoginPage = () => {
 
       {/* Bottom Footer Note */}
       <footer className="mt-8 text-center text-xs text-slate-500">
-        JANMITRA &bull; Developed by Team ResolveIT &bull; Nagpur Municipal Corporation
+        JANMITRA &bull; Developed by Team ResolveIT &bull; Janmitra Municipal Corporation
       </footer>
     </div>
   );

@@ -26,6 +26,7 @@ import OfficerLayout from './layouts/OfficerLayout';
 import AdminLayout from './layouts/AdminLayout';
 
 // Pages
+import LandingHome from './pages/LandingHome';
 import LoginPage from './pages/LoginPage';
 import CitizenHome from './pages/citizen/Home';
 import MyComplaints from './pages/citizen/MyComplaints';
@@ -63,8 +64,8 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<LoginPage />} />
 
-            {/* Default Root Redirect */}
-            <Route path="/" element={<Navigate to="/citizen" replace />} />
+            {/* ================= PUBLIC TRANSPARENCY HOME PAGE ================= */}
+            <Route path="/" element={<LandingHome />} />
 
             {/* ================= 1. CITIZEN PORTAL ================= */}
             <Route
